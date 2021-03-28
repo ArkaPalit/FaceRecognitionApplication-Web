@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Outside Person
+{% endblock title %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success{{message.tag}} alert-dismissible fade show my-0" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+<div class='row'>
+    <div class='col-sm-8 offset-2'>
+    <h4 class="alert alert-primary">Update Information</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{fm.as_p}}
+        <input type="submit" class="btn btn-success" value="Update">
+    </form>
+    </div>
+</div>
+{% endblock body %}

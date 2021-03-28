@@ -1,0 +1,163 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Employee: Add New
+{% endblock title %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success{{message.tag}} alert-dismissible fade show my-0" role="alert">
+	<strong>{{message}}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+{% endfor %}
+{% endif %}
+<div class="container mt-5">
+	<h4 class="text-center alert alert-primary">Employee</h4>
+	<div class="row">
+		<div class="col-sm-6">
+			<form name="outside_person_new" class="form-group" method="post" action="/employee/">
+				{% csrf_token %}
+				<h4 class="text-center alert alert-primary">Add New</h4>
+				<div class="row jumbotron">
+					<div class="col-sm-6">
+						<label for="inputname">Employee Name</label>
+						<input type="text" class="form-control" name="name" placeholder="Enter Employee Name">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Date of Birth</label>
+						<input type="date" class="form-control" name="date_of_birth" placeholder="Enter Date">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Employee ID</label>
+						<input type="text" class="form-control" name="employee_id" placeholder="Enter Employee ID">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">Department</label>
+						<select id="inputState" class="form-control" name="department">
+							<option selected>Choose Department...</option>
+							<option>Academics</option>
+							<option>Admissions</option>
+							<option>Library</option>
+							<option>Accounts</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">School</label>
+						<select id="inputState" class="form-control" name="school">
+							<option selected>Choose School...</option>
+							<option>SOET</option>
+							<option>SOPT</option>
+							<option>SOBT</option>
+							<option>SOS</option>
+							<option>JMCF</option>
+                            <option>N.A.</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">University Mail ID</label>
+						<input type="text" class="form-control" name="university_mail" placeholder="Enter Mail ID">
+					</div>
+					
+					<div class="col-sm-6">
+						<label for="inputState">ID Proof</label>
+						<select id="inputState" class="form-control" name="id_type">
+							<option selected>Choose...</option>
+							<option>Adhar Card</option>
+							<option>PAN Card</option>
+							<option>Voter's ID</option>
+							<option>Passport</option>
+							<option>Driving License</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">ID Proof No.</label>
+						<input type="text" class="form-control" name="id_proof_no" placeholder="Enter ID No.">
+					</div>
+					<div class="col-sm-6 form-row field-photo">
+                		<div>
+                        	<label for="id_photo">ID Photo (.jpg or .png format)</label>
+                            <input type="file" name="idproof_photo" accept="image/*" id="id_photo">
+                		</div>
+        			</div>
+					<div class="col-sm-6">
+						<label for="inputname">Date of Joining</label>
+						<input type="date" class="form-control" name="date_of_joining" placeholder="Enter Date">
+					</div>
+					<div class="col-md-6 form-row field-id_photo">
+                		<div>
+                        	<label for="id_id_photo">Photo (.jpg or .png format)</label>
+                            <input type="file" name="photo" accept="image/*" id="id_id_photo">   
+                		</div>
+        			</div>
+
+
+					<div class="col-md-12" style="text-align: center; margin-top: 20px">
+						<button type="submit" class="btn btn-success">Submit</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+
+
+
+
+		<div class="col-sm-6">
+			<h4 class="text-center alert alert-primary">Search</h4>
+			<div class="row">
+                <div class="col-md-10">
+                    <form>
+                        <a><input class="form-control" type="search" placeholder="Search by Student Name"
+                                aria-label="Search"></a>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <a><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></a>
+                </div>
+            </diV>
+			<div class="container mt-3">
+			{% if em %}
+			<table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            
+                            <th scope="col">Dept.</th>
+                            <th scope="col">Mail</th>
+                            
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in em %}
+                        <tr>
+                            <th scope="row">{{data.name}}</th>
+                            
+                            <td>{{data.department}}</td>
+                            <td>{{data.university_mail}}</td>
+                            
+                            <td>
+                                <form action=" {% url 'view_employee' data.id %} " method="post" class="d-inline">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-warning btn-sm" value="View">
+                                </form>
+                                <form action=" {% url 'delete_employee' data.id %} " method="post" class="d-inline">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+			{% else %}
+			<h4 class="text-center alert alert-warning"> No records found </h4>
+			{% endif %}
+			</diV>
+		</div>
+	</div>
+</diV>
+{% endblock body %}

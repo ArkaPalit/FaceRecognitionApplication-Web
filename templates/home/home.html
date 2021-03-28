@@ -1,0 +1,110 @@
+{% extends 'base/base2.html' %}
+{% block title %}
+Home: Face Recognition App
+{% endblock title %}
+
+{% block head %}
+<style>
+  .inner {
+    overflow: hidden;
+  }
+
+  .inner img {
+    transition: all 1.5s ease;
+  }
+
+  .inner:hover img {
+    transform: scale(1.5);
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="container my-2">
+  <div class="row justify-content-center" style="margin-top: 50px;">
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover1.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Face Scan</h5>
+          <p class="card-text">Click the button to get the options.
+            </p>
+          <a href="{% url 'scan_options' %}" class="btn btn-success">View Options</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover2.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Student</h5>
+          <p class="card-text">Add New or Search Student's Details
+            </p>
+          <a href='/student/' class="btn btn-success">Add New</a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover3.jpg" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Employee</h5>
+          <p class="card-text">Add New or Search Employee's Details
+            </p>
+          <a href="/employee/" class="btn btn-success">Add New</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-2">
+  <div class="row justify-content-center" style="margin-top: 50px;">
+    
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover4.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Outside the Organization</h5>
+          <p class="card-text">Add a person outside the Organization
+            </p>
+          <a href='/outside/' class="btn btn-success">Add New</a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover5.jpg" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Entry & Exit</h5>
+          <p class="card-text">View entry & exit details.
+            </p>
+          <a href=" {% url 'attendance_options' %} " class="btn btn-success">View Details</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+    {% endblock body %}

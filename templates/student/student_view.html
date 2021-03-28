@@ -1,0 +1,119 @@
+{% extends 'base/base.html' %}
+{% block title %}
+View: Student Details
+{% endblock title %}
+{% block head %}
+
+{% endblock head %}
+
+{% block body %}
+
+
+
+<div class="container mt-5">
+    <h4 class="text-center alert alert-primary">Student</h4>
+    <div class="row">
+        <div class="col-sm-6">
+            <form name="outside_person_new" class="form-group" method="post" action="/outside/">
+                {% csrf_token %}
+                <h4 class="text-center alert alert-primary">Details</h4>
+                <div class="row jumbotron">
+                {% if view_stu %}
+                   <div class="col-sm-6">
+						<label for="inputname">Student Name</label>
+						<input type="text" class="form-control" name="name" placeholder=" {{view_stu.name}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">Parent's Name</label>
+						<input type="text" class="form-control" name="parents_name" placeholder=" {{view_stu.parents_name}}" disabled="true">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Parent's Phone No.</label>
+						<input type="text" class="form-control" name="parents_no" placeholder=" {{view_stu.parents_no}}" disabled="true">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Parent's Mail ID (if any)</label>
+						<input type="text" class="form-control" name="parents_email" placeholder=" {{view_stu.parents_email}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">Date of Birth</label>
+						<input type="date" class="form-control"  name="date_of_birth" placeholder=" {{view_stu.date_of_birth}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">ID Proof</label>
+						<input type="date" class="form-control"  name="date_of_birth" placeholder=" {{view_stu.id_type}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">ID Proof No.</label>
+						<input type="text" class="form-control" name="id_proof_no" placeholder=" {{view_stu.id_proof_no}} " disabled="true">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Registration No.</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.reg_no}} " disabled="true">
+					</div>
+
+                    <div class="col-sm-6">
+						<label for="inputname">Course</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.course}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">Course Duration (In Years)</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.course_years}} " disabled="true">
+					</div>
+                    
+                    <div class="col-sm-6">
+						<label for="inputname">School</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.school}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">Department</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.dept}} " disabled="true">
+					</div>
+                    
+                    <div class="col-sm-6">
+						<label for="inputname">Roll Number</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.roll_no}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">University Mail ID</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.university_mail}} " disabled="true">
+					</div>
+
+                    <div class="col-sm-6">
+						<label for="inputname">Mentor's Name</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.mentors_name}} " disabled="true">
+					</div>
+                    <div class="col-sm-6">
+						<label for="inputname">Date of Admission</label>
+						<input type="text" class="form-control" name="reg_no" placeholder=" {{view_stu.date_of_admission}} " disabled="true">
+					</div>
+
+                    <div class="col-md-12" style="text-align: center; margin-top: 20px">
+                        <a href=" {% url 'student' %} " class="btn btn-danger">←Back</a>
+                        <a href=" # " class="btn btn-warning">Edit</a>
+                    </div>
+                    
+                {% endif %}
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-sm-6">
+            <h4 class="text-center alert alert-primary">Photos</h4>
+
+            <div class="container mt-3">
+            <div class="col-sm-12">
+                {% if view_stu.photo %}
+                <center><img src="{{view_stu.photo.url}}" width="290"></center>
+                {% else %}
+                <h4 class="text-center alert alert-warning"> No Photos Found </h4>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+
+
+
+
+{% endblock body %}

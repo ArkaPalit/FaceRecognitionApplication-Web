@@ -1,0 +1,121 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Outside Person
+{% endblock title %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success{{message.tag}} alert-dismissible fade show my-0" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+<div class="container mt-5">
+    <h4 class="text-center alert alert-primary">Outside Person</h4>
+    <div class="row">
+        <div class="col-sm-4">
+            <form name="outside_person_new" class="form-group" method="post" action="/outside/">
+                {% csrf_token %}
+                <h4 class="text-center alert alert-primary">Add New</h4>
+                <div class="row jumbotron">
+                    <label for="inputname">Full Name</label>
+                    <input type="text" class="form-control" name="full_name" placeholder="Enter Full Name">
+
+                    <label for="inputname">Address</label>
+                    <input type="text" class="form-control" name="address" placeholder="Enter Address">
+
+                    <label for="inputState">Purpose</label>
+                    <select id="inputState" class="form-control" name="purpose">
+                        <option selected>Choose Purpose...</option>
+                        <option>Admission</option>
+                        <option>Acdemics</option>
+                        <option>Fees Payment</option>
+                        <option>Bank</option>
+                        <option>Campus Tour</option>
+                    </select>
+
+                    <label for="inputname">Phone Number</label>
+                    <input type="text" class="form-control" name="phone_no" placeholder="Enter Phone Number">
+
+                    
+                    <label for="inputname">Email (if any)</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Email id">
+                   
+
+                    
+
+                    <div class="col-md-12" style="text-align: center; margin-top: 20px">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-8">
+            <h4 class="text-center alert alert-primary">Search</h4>
+            <div class="row">
+                <div class="col-md-5">
+                    <form>
+                        <a><input class="form-control" type="search" placeholder="Search by Name"
+                                aria-label="Search"></a>
+                    </form>
+                </div>
+                <div class="col-md-5">
+                    <form>
+                        <a><input class="form-control" type="search" placeholder="Select Purpose"
+                                aria-label="Search"></a>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <a><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></a>
+                </div>
+            </diV>
+            <div class="container mt-3">
+                {% if out %}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Purpose</th>
+                            
+                            <th scope="col">Entry Time</th>
+                            <th scope="col">Exit Time</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in out %}
+                        <tr>
+                            <th scope="row">{{data.full_name}}</th>
+                            <td>{{data.purpose}}</td>
+                            
+                            <td>{{data.time_of_entry}}</td>
+                            <td>{{data.time_of_exit}}</td>
+                            <td>{{data.date}}
+                            <td>
+                                <form action=" {% url 'view_outside' data.id %} " method="post" class="d-inline">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-warning btn-sm" value="View">
+                                </form>
+                                <form action=" {% url 'delete_outside' data.id %} " method="post" class="d-inline">
+                                {% csrf_token %}
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <h4 class="text-center alert alert-warning"> No records found </h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+

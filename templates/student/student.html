@@ -1,0 +1,215 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Student: Add New
+{% endblock title %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success{{message.tag}} alert-dismissible fade show my-0" role="alert">
+	<strong>{{message}}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+{% endfor %}
+{% endif %}
+<div class="container mt-5">
+	<h4 class="text-center alert alert-primary">Student</h4>
+	<div class="row">
+		<div class="col-sm-6">
+			<form name="outside_person_new" class="form-group" method="post" action="/student/"
+				enctype='multipart/form-data'>
+				{% csrf_token %}
+				<h4 class="text-center alert alert-primary">Add New</h4>
+				<div class="row jumbotron">
+					<div class="col-sm-6">
+						<label for="inputname">Student Name</label>
+						<input type="text" class="form-control" name="name" placeholder="Enter Student Name">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Parent's Name</label>
+						<input type="text" class="form-control" name="parents_name" placeholder="Enter Parent's Name">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Parent's Phone No.</label>
+						<input type="text" class="form-control" name="parents_no" placeholder="Enter Parent's Phone No.">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Parent's Mail ID (if any)</label>
+						<input type="text" class="form-control" name="parents_email" placeholder="Enter Parent's Mail ID">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Date of Birth</label>
+						<input type="date" class="form-control"  name="date_of_birth">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">ID Proof</label>
+						<select id="inputState" class="form-control" name="id_type">
+							<option selected>Choose...</option>
+							<option>Adhar Card</option>
+							<option>PAN Card</option>
+							<option>Voter's ID</option>
+							<option>Passport</option>
+							<option>Driving License</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">ID Proof No.</label>
+						<input type="text" class="form-control" name="id_proof_no" placeholder="Enter Student Name">
+					</div>
+					<div class="col-sm-6 form-row field-photo">
+                		<div>
+                        	<label for="id_photo">ID Photo (.jpg or .png format)</label>
+                            <input type="file" name="idproof_photo" accept="image/*" id="id_photo">
+                		</div>
+        			</div>
+					<div class="col-sm-6">
+						<label for="inputname">Registration No.</label>
+						<input type="text" class="form-control" name="reg_no" placeholder="Enter Registration No.">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">Course</label>
+						<select id="inputState" class="form-control" name="course">
+							<option selected>Choose Course...</option>
+							<option>B.Tech</option>
+							<option>BCA</option>
+							<option>B.Sc</option>
+							<option>B. Com</option>
+							<option>B.A</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">Course Duration (In Years)</label>
+						<select id="inputState" class="form-control" name="course_years">
+							<option selected>Choose Duration...</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">School</label>
+						<select id="inputState" class="form-control" name="school">
+							<option selected>Choose School...</option>
+							<option>SOET</option>
+							<option>SOPT</option>
+							<option>SOBT</option>
+							<option>SOS</option>
+							<option>JMCF</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">Department</label>
+						<select id="inputState" class="form-control" name="dept">
+							<option selected>Choose Department...</option>
+							<option>CSE</option>
+							<option>CE</option>
+							<option>ME</option>
+							<option>ECE</option>
+							<option>EE</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Roll No.</label>
+						<input type="text" class="form-control" name="roll_no" placeholder="Enter Roll No.">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">University Mail ID</label>
+						<input type="text" class="form-control" name="university_mail" placeholder="Enter Mail ID">
+					</div>
+					<div class="col-sm-6">
+						<label for="inputState">Mentor's Name</label>
+						<select id="inputState" class="form-control" name="mentors_name">
+							<option selected>Choose...</option>
+							<option>Prof. S. Biswas</option>
+							<option>Prof. R. Kumar</option>
+							<option>Prof. K. Saha</option>
+							<option>Prof. U. Das</option>
+							<option>Prof. D. Paul</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="inputname">Date of Admission</label>
+						<input type="date" class="form-control" name="date_of_admission" placeholder="Auto Generated">
+					</div>
+
+
+
+					<div class="col-sm-6 form-row field-photo">
+						<div>
+							<label for="id_photo">Photos (.jpg or .png format)</label>
+							<input type="file" name="photo" accept="image/*" id="id_photo">
+						</div>
+					</div>
+
+						<div class="col-md-12" style="text-align: center; margin-top: 20px">
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+					</div>
+
+			</form>
+		</div>
+
+
+
+
+
+		<div class="col-sm-6">
+			<h4 class="text-center alert alert-primary">Search</h4>
+			<div class="row ">
+				<div class="col-md-10">
+					<form>
+						<a><input class="form-control" type="search" placeholder="Search by Student Name"
+								aria-label="Search"></a>
+					</form>
+				</div>
+				<div class="col-md-2">
+					<a><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></a>
+				</div>
+			</diV>
+			<div class="container mt-3">
+				{% if stu %}
+				<table class="table table-hover ">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Regn.</th>
+							<th scope="col">Roll.</th>
+
+							<th scope="col">Dept.</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for data in stu %}
+						<tr>
+							<th scope="row">{{data.name}}</th>
+							<td>{{data.reg_no}}</td>
+							<td>{{data.roll_no}}</td>
+
+							<td>{{data.dept}}
+							<td>
+								<form action=" {% url 'view_student' data.id %} " method="post" class="d-inline">
+									{% csrf_token %}
+									<input type="submit" class="btn btn-warning btn-sm" value="View">
+								</form>
+								<form action=" {% url 'delete_student' data.id %} " method="post" class="d-inline">
+									{% csrf_token %}
+									<input type="submit" class="btn btn-danger btn-sm" value="Delete">
+								</form>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				{% else %}
+				<h4 class="text-center alert alert-warning"> No records found </h4>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+</diV>
+{% endblock body %}

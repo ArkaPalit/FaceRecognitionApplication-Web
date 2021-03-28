@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Face Scanning: Options
+{% endblock title %}
+{% block head %}
+<style>
+  .inner {
+    overflow: hidden;
+  }
+
+  .inner img {
+    transition: all 1.5s ease;
+  }
+
+  .inner:hover img {
+    transform: scale(1.5);
+  }
+</style>
+{% endblock head %}
+{% block body %}
+
+<div class="container mt-5">
+    <h4 class="text-center alert alert-primary">Face Scanning: Options</h4>
+<div class="container my-2">
+  <div class="row justify-content-center" style="margin-top: 50px;">
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover2.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Student</h5>
+          <p class="card-text">Click the button to start scanning face of students.
+            </p>
+          <a href="{% url 'scan_student' %}" class="btn btn-primary">Start Scanning</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover3.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Employee</h5>
+          <p class="card-text">Click the button to start scanning face of students.
+            </p>
+          <a href="#" class="btn btn-primary">Start Scanning</a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover4.jpg" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Outside Person</h5>
+          <p class="card-text">Click the button to start scanning face of outside persons.
+            </p>
+          <a href="#" class="btn btn-primary">Start Scanning</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    </div>
+  </div>
+</div>
+ 
+ 
+{% endblock body %}

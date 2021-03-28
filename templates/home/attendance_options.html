@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Entry & Exit: Options
+{% endblock title %}
+{% block head %}
+<style>
+  .inner {
+    overflow: hidden;
+  }
+
+  .inner img {
+    transition: all 1.5s ease;
+  }
+
+  .inner:hover img {
+    transform: scale(1.5);
+  }
+</style>
+{% endblock head %}
+{% block body %}
+
+<div class="container mt-5">
+    <h4 class="text-center alert alert-primary">Entry & Exit Details</h4>
+<div class="container my-2">
+  <div class="row justify-content-center" style="margin-top: 50px;">
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover2.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Student</h5>
+          <p class="card-text">Click the button to view entry & exit details of students. 
+            </p>
+          <a href="{% url 'student_attendance' %}" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card shadow" style="width: 20rem;">
+        <div class="inner">
+          <img src="/static/img/hover3.jpg" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card-body text-center">
+          <h5 class="card-title">Employee</h5>
+          <p class="card-text">Click the button to view entry & exit details of employees. 
+            </p>
+          <a href=" {% url 'employee_attendance' %} " class="btn btn-primary">View Details</a>
+          
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+    
+  </div>
+</div>
+{% endblock body %}

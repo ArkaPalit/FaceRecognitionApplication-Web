@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% block title %}
+View: Outside Person
+{% endblock title %}
+{% block head %}
+
+{% endblock head %}
+
+{% block body %}
+
+
+<div class="container mt-5">
+    <h4 class="text-center alert alert-primary">Outside Person</h4>
+    <div class="row">
+        <div class="col-sm-4">
+            <form name="outside_person_new" class="form-group" method="post" action="/outside/">
+                {% csrf_token %}
+                <h4 class="text-center alert alert-primary">Details</h4>
+                <div class="row jumbotron">
+                {% if view_out %}
+                    <label for="inputname">Full Name</label>
+                    <input type="text" class="form-control" name="full_name" placeholder="{{view_out.full_name}}" disabled="true">
+
+                    <label for="inputname">Address</label>
+                    <input type="text" class="form-control" name="address" placeholder="{{view_out.address}}" disabled="true">
+
+                    <label for="inputname">Purpose</label>
+                    <input type="text" class="form-control" name="address" placeholder= "{{view_out.purpose}}" disabled="true">
+
+                    <label for="inputname">Phone Number</label>
+                    <input type="text" class="form-control" name="address" placeholder="{{view_out.phone_no}}" disabled="true">
+
+                    <label for="inputname">Email (if any)</label>
+                    <input type="email" class="form-control" name="email" placeholder=" {{view_out.email}} " disabled="true">
+
+                    <label for="inputname">Time of Entry</label>
+                    <input type="text" class="form-control" name="address" placeholder="{{view_out.time_of_entry}}" disabled="true">
+
+                    <label for="inputname">Time of Exit</label>
+                    <input type="text" class="form-control" name="address" placeholder="{{view_out.time_of_exit}}" disabled="true">
+
+                    <label for="inputname">Date</label>
+                    <input type="text" class="form-control" name="address" placeholder="{{view_out.date}}" disabled="true">
+                    
+                    <div class="col-md-12" style="text-align: center; margin-top: 20px">
+                        <a href=" {% url 'outside' %} " class="btn btn-danger">←Back</a>
+                        <a href=" # " class="btn btn-warning">Edit</a>
+                    </div>
+                    
+                {% endif %}
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-sm-8">
+            <h4 class="text-center alert alert-primary">Photos</h4>
+
+            <div class="container mt-3">
+                {% if view_out.photo %}
+                
+                {% else %}
+                <h4 class="text-center alert alert-warning"> No Photos Found </h4>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+
+
+{% endblock body %}
