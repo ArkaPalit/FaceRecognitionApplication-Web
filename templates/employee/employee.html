@@ -23,19 +23,15 @@ Employee: Add New
 				<div class="row jumbotron">
 					<div class="col-sm-6">
 						<label for="inputname">Employee Name</label>
-						<input type="text" class="form-control" name="name" placeholder="Enter Employee Name">
-					</div>
-					<div class="col-sm-6">
-						<label for="inputname">Date of Birth</label>
-						<input type="date" class="form-control" name="date_of_birth" placeholder="Enter Date">
+						<input type="text" class="form-control" name="name" placeholder="Enter Employee Name" required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputname">Employee ID</label>
-						<input type="text" class="form-control" name="employee_id" placeholder="Enter Employee ID">
+						<input type="text" class="form-control" name="employee_id" placeholder="Enter Employee ID" required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputState">Department</label>
-						<select id="inputState" class="form-control" name="department">
+						<select id="inputState" class="form-control" name="department" required>
 							<option selected>Choose Department...</option>
 							<option>Academics</option>
 							<option>Admissions</option>
@@ -43,52 +39,21 @@ Employee: Add New
 							<option>Accounts</option>
 						</select>
 					</div>
-					<div class="col-sm-6">
-						<label for="inputState">School</label>
-						<select id="inputState" class="form-control" name="school">
-							<option selected>Choose School...</option>
-							<option>SOET</option>
-							<option>SOPT</option>
-							<option>SOBT</option>
-							<option>SOS</option>
-							<option>JMCF</option>
-                            <option>N.A.</option>
-						</select>
-					</div>
-					<div class="col-sm-6">
-						<label for="inputname">University Mail ID</label>
-						<input type="text" class="form-control" name="university_mail" placeholder="Enter Mail ID">
-					</div>
 					
 					<div class="col-sm-6">
-						<label for="inputState">ID Proof</label>
-						<select id="inputState" class="form-control" name="id_type">
-							<option selected>Choose...</option>
-							<option>Adhar Card</option>
-							<option>PAN Card</option>
-							<option>Voter's ID</option>
-							<option>Passport</option>
-							<option>Driving License</option>
-						</select>
+						<label for="inputname">University Mail ID</label>
+						<input type="text" class="form-control" name="university_mail" placeholder="Enter Mail ID" required>
 					</div>
+
 					<div class="col-sm-6">
-						<label for="inputname">ID Proof No.</label>
-						<input type="text" class="form-control" name="id_proof_no" placeholder="Enter ID No.">
+						<label for="inputname">Phone No.</label>
+						<input type="number" class="form-control" name="phone_no" placeholder="Enter Phone no." required>
 					</div>
-					<div class="col-sm-6 form-row field-photo">
-                		<div>
-                        	<label for="id_photo">ID Photo (.jpg or .png format)</label>
-                            <input type="file" name="idproof_photo" accept="image/*" id="id_photo">
-                		</div>
-        			</div>
-					<div class="col-sm-6">
-						<label for="inputname">Date of Joining</label>
-						<input type="date" class="form-control" name="date_of_joining" placeholder="Enter Date">
-					</div>
+					
 					<div class="col-md-6 form-row field-id_photo">
                 		<div>
-                        	<label for="id_id_photo">Photo (.jpg or .png format)</label>
-                            <input type="file" name="photo" accept="image/*" id="id_id_photo">   
+                        	<label for="id_photo">Photo (.jpg or .png format)</label>
+                            <input type="file" name="photo" accept="image/*" id="id_photo" required>   
                 		</div>
         			</div>
 
@@ -146,7 +111,7 @@ Employee: Add New
                                 </form>
                                 <form action=" {% url 'delete_employee' data.id %} " method="post" class="d-inline">
                                 {% csrf_token %}
-                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                    {% comment %} <input type="submit" class="btn btn-danger btn-sm" value="Delete"> {% endcomment %}
                                 </form>
                             </td>
                         </tr>

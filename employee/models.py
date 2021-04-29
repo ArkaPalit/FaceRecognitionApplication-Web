@@ -5,15 +5,16 @@ from django.db import models
 class Employee(models.Model):
     employee_id = models.CharField(max_length=20)
     name = models.CharField(max_length=122)
-    date_of_birth = models.DateField()
+    # date_of_birth = models.DateField()
     department = models.CharField(max_length=10)
-    school = models.CharField(max_length=6)
+    # school = models.CharField(max_length=6)
     university_mail = models.CharField(max_length=20)
-    date_of_joining = models.DateField()
+    phone_no = models.IntegerField()
+    # date_of_joining = models.DateField()
     photo = models.ImageField(upload_to='employee_img/', blank=True)
-    id_proof_no = models.CharField(max_length=20)
-    id_type = models.CharField(max_length=20)
-    id_photo = models.ImageField(upload_to='employee_id/',blank=True)
+    # id_proof_no = models.CharField(max_length=20)
+    # id_type = models.CharField(max_length=20)
+    # id_photo = models.ImageField(upload_to='employee_id/',blank=True)
     def __str__(self):
         return self.name
     

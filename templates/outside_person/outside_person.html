@@ -1,7 +1,58 @@
 {% extends 'base/base.html' %}
+
 {% block title %}
 Outside Person
 {% endblock title %}
+
+{% block head %}
+<style>
+    #camera {
+        height: 350px;
+        width: 500px;
+        margin-top: 0;
+        border: 1px solid rgb(170, 169, 169);
+        border-radius: 5px;
+    }
+    .camera_shutter {
+        height: 40px;
+        width: 95%;
+        margin-left: 15px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding-top: 5px;
+        background-color: #FFC106;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        font-size: large;
+        cursor: pointer;
+    }
+    .camera_shutter:hover {
+        background-color: #e2aa04;
+    }
+    #camera_preview {
+        height: 350px;
+        width: 400px;
+        margin: 0px auto;
+        border-radius: 5px;
+        background-color: #FFF3CD;
+    }
+    #camera_preview > h2 {
+        font-size: 30px;
+        text-align: center;
+        padding-top: 35%;
+        color: #856405;
+    }
+    .img {
+        height: 350px;
+        width: 400px;
+        border-radius: 5px;
+        margin: 0px auto;
+    }
+	</style>
+</style>
+{% endblock head %}
+
 {% block body %}
 {% if messages %}
 {% for message in messages %}
@@ -16,19 +67,25 @@ Outside Person
 <div class="container mt-5">
     <h4 class="text-center alert alert-primary">Outside Person</h4>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <form name="outside_person_new" class="form-group" method="post" action="/outside/">
                 {% csrf_token %}
                 <h4 class="text-center alert alert-primary">Add New</h4>
                 <div class="row jumbotron">
+
+                    
+                    <div id="camera" name="photo">
+                    </div>
+                    <div class="camera_shutter" onclick="take_snapshot()">Capture Image</div>
+                    
+                    <div class="col-sm-6">
                     <label for="inputname">Full Name</label>
-                    <input type="text" class="form-control" name="full_name" placeholder="Enter Full Name">
+                    <input type="text" class="form-control" name="full_name" placeholder="Enter Full Name" required>
+                    </div>
 
-                    <label for="inputname">Address</label>
-                    <input type="text" class="form-control" name="address" placeholder="Enter Address">
-
+                    <div class="col-sm-6">
                     <label for="inputState">Purpose</label>
-                    <select id="inputState" class="form-control" name="purpose">
+                    <select id="inputState" class="form-control" name="purpose" required>
                         <option selected>Choose Purpose...</option>
                         <option>Admission</option>
                         <option>Acdemics</option>
@@ -36,86 +93,67 @@ Outside Person
                         <option>Bank</option>
                         <option>Campus Tour</option>
                     </select>
+                    </div>
 
+                    <div class="col-sm-12">
+                    <label for="inputname">Address</label>
+                    <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
+                    </div>
+
+
+                    <div class="col-sm-6">
                     <label for="inputname">Phone Number</label>
-                    <input type="text" class="form-control" name="phone_no" placeholder="Enter Phone Number">
+                    <input type="number" class="form-control" name="phone_no" placeholder="Enter Phone Number" required>
+                    </div>
 
-                    
+                    <div class="col-sm-6">
                     <label for="inputname">Email (if any)</label>
                     <input type="email" class="form-control" name="email" placeholder="Enter Email id">
-                   
+                    </div>
 
-                    
+                    <!-- <label for="inputname">Upload Photo</label>
+                    <input type="file"  name="photo" placeholder="Enter Email id"> -->
 
+                    <div class="col-md-6" style="text-align: center; margin-top: 20px">
+                        
+                    </div>
                     <div class="col-md-12" style="text-align: center; margin-top: 20px">
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="col-sm-8">
-            <h4 class="text-center alert alert-primary">Search</h4>
-            <div class="row">
-                <div class="col-md-5">
-                    <form>
-                        <a><input class="form-control" type="search" placeholder="Search by Name"
-                                aria-label="Search"></a>
-                    </form>
+
+        <div class="col-sm-6">
+            
+            <h4 class="text-center alert alert-primary">Image Preview</h4>
+            
+                <div id="camera_preview" name='photo'>
+                    <h2>No image to preview</h2>
                 </div>
-                <div class="col-md-5">
-                    <form>
-                        <a><input class="form-control" type="search" placeholder="Select Purpose"
-                                aria-label="Search"></a>
-                    </form>
-                </div>
-                <div class="col-md-2">
-                    <a><button class="btn btn-success my-2 my-sm-0" type="submit">Search</button></a>
-                </div>
-            </diV>
-            <div class="container mt-3">
-                {% if out %}
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Purpose</th>
-                            
-                            <th scope="col">Entry Time</th>
-                            <th scope="col">Exit Time</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for data in out %}
-                        <tr>
-                            <th scope="row">{{data.full_name}}</th>
-                            <td>{{data.purpose}}</td>
-                            
-                            <td>{{data.time_of_entry}}</td>
-                            <td>{{data.time_of_exit}}</td>
-                            <td>{{data.date}}
-                            <td>
-                                <form action=" {% url 'view_outside' data.id %} " method="post" class="d-inline">
-                                {% csrf_token %}
-                                    <input type="submit" class="btn btn-warning btn-sm" value="View">
-                                </form>
-                                <form action=" {% url 'delete_outside' data.id %} " method="post" class="d-inline">
-                                {% csrf_token %}
-                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-                                </form>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <h4 class="text-center alert alert-warning"> No records found </h4>
-                {% endif %}
-            </div>
+           
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js">
+</script>
+<script>
+    // Load webcam
+    Webcam.set({
+        width: 500,
+        height: 350,
+        image_format: 'jpeg',
+        jpeg_quality:90
+    })
+    Webcam.attach("#camera")
+    function take_snapshot() {
+        Webcam.snap(function(photo){
+            // display results
+            document.getElementById('camera_preview').innerHTML = 
+            ' <img class="img" name="photo" src="'+photo+'"/> ';
+        });
+    }
+</script>
 {% endblock body %}
 
 

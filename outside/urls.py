@@ -9,6 +9,7 @@ urlpatterns = [
     path('<int:id>/',views.edit_outside, name='edit_outside'),
 
     path('scan/outside/',views.scan_outside, name='scan_outside'),
+    path('outside/capture/', views.outside_capture, name='outside_capture'),
     
 ]
 

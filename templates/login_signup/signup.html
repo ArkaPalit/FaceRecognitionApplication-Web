@@ -90,6 +90,7 @@ Welcome: Face Recognition App
         margin-left: 35%;
         font-size: 13px;
         box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        outline: 0;
     }
 
 	.signup {
@@ -143,7 +144,7 @@ Welcome: Face Recognition App
     <form name="form1" class="form-group" method="post" action="/signup/">
 	{% csrf_token %}
         <input class="un " type="hidden" align="center" name="user" value="{{user.username}}">
-		<input class="un " type="name" align="center" name="otp" placeholder="Enter OTP">
+		<input class="un " type="name" align="center" name="otp" placeholder="Enter OTP" required>
         <button class="submit" align="center">Submit</button>
 	    <p class="signup" align="center"><i><a href="resendOTP" onclick="ReSendOTP('{{user.username}}', 'resendOTPmess')"><i id="resendOTPmess">Resend </i>OTP</a></P>
     </form>
@@ -153,12 +154,12 @@ Welcome: Face Recognition App
     <p class="sign" align="center">User Registration</p>
     <form name="form1" class="form-group" method="post" action="/signup/">
 	{% csrf_token %}
-		<input class="un " type="name" align="center" name="first_name" placeholder="Enter your First Name">
-		<input class="un " type="name" align="center" name="last_name" placeholder="Enter your Last Name">
-		<input class="un " type="email" align="center" name="email" placeholder="Enter your Email ID">
-      	<input class="un " type="username" align="center" name="username" placeholder="Choose Username">
-     	<input class="pass" type="password" align="center" name="password1" placeholder="Enter Password">
-		<input class="pass" type="password" align="center" name="password2" placeholder="Re-enter Password">
+		<input class="un " type="name" align="center" name="first_name" placeholder="Enter your First Name" required>
+		<input class="un " type="name" align="center" name="last_name" placeholder="Enter your Last Name" required>
+		<input class="un " type="email" align="center" name="email" placeholder="Enter your Email ID" required>
+      	<input class="un " type="username" align="center" name="username" placeholder="Choose Username" required>
+     	<input class="pass" type="password" align="center" name="password1" placeholder="Enter Password" required>
+		<input class="pass" type="password" align="center" name="password2" placeholder="Re-enter Password" required>
         <button class="submit" align="center">Sign Up</button>
 	    <p class="signup" align="center"><a>Already Registered?</a> <a href='/'><i>Log In</i></a></p>
             

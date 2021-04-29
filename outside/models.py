@@ -11,7 +11,7 @@ class Outside_Person(models.Model):
         time_of_entry = models.TimeField(auto_now=True)
         time_of_exit = models.TimeField(null=True, blank=True)
         date = models.DateField(auto_now=True)
-        picture = models.ImageField(upload_to='outside_img/', blank=True)
+        photo = models.ImageField(upload_to='outside_img/')
         def __str__(self):
             return self.full_name
         

@@ -28,7 +28,8 @@ def outside(request):
         time_of_entry = request.POST.get('time_of_entry')
         email = request.POST.get('email')
         date = request.POST.get('date')
-        outside = Outside_Person(full_name=full_name, address=address, purpose=purpose, phone_no=phone_no, time_of_entry=time_of_entry, date=date, email=email)
+        photo = request.POST.get('photo')
+        outside = Outside_Person(full_name=full_name, address=address, purpose=purpose, phone_no=phone_no, time_of_entry=time_of_entry, date=date, email=email, photo=photo)
         outside.save()
         messages.success(request, "Person added to the database successfully.")
     out = Outside_Person.objects.all()
@@ -73,3 +74,6 @@ def edit_outside(request, id):
 @login_required(login_url='/')
 def scan_outside(request):
     pass
+
+def outside_capture(request):
+    return render(request, 'outside_person/outside_personCapture')

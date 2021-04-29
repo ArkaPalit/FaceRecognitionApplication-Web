@@ -24,52 +24,28 @@ Student: Add New
 				<div class="row jumbotron">
 					<div class="col-sm-6">
 						<label for="inputname">Student Name</label>
-						<input type="text" class="form-control" name="name" placeholder="Enter Student Name">
+						<input type="text" class="form-control" name="name" placeholder="Enter Student Name" required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputname">Parent's Name</label>
-						<input type="text" class="form-control" name="parents_name" placeholder="Enter Parent's Name">
+						<input type="text" class="form-control" name="parents_name" placeholder="Enter Parent's Name" required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputname">Parent's Phone No.</label>
-						<input type="text" class="form-control" name="parents_no" placeholder="Enter Parent's Phone No.">
+						<input type="number" class="form-control" name="parents_no" placeholder="Enter Parent's Phone No." required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputname">Parent's Mail ID (if any)</label>
 						<input type="text" class="form-control" name="parents_email" placeholder="Enter Parent's Mail ID">
 					</div>
-					<div class="col-sm-6">
-						<label for="inputname">Date of Birth</label>
-						<input type="date" class="form-control"  name="date_of_birth">
-					</div>
-					<div class="col-sm-6">
-						<label for="inputState">ID Proof</label>
-						<select id="inputState" class="form-control" name="id_type">
-							<option selected>Choose...</option>
-							<option>Adhar Card</option>
-							<option>PAN Card</option>
-							<option>Voter's ID</option>
-							<option>Passport</option>
-							<option>Driving License</option>
-						</select>
-					</div>
-					<div class="col-sm-6">
-						<label for="inputname">ID Proof No.</label>
-						<input type="text" class="form-control" name="id_proof_no" placeholder="Enter Student Name">
-					</div>
-					<div class="col-sm-6 form-row field-photo">
-                		<div>
-                        	<label for="id_photo">ID Photo (.jpg or .png format)</label>
-                            <input type="file" name="idproof_photo" accept="image/*" id="id_photo">
-                		</div>
-        			</div>
+					
 					<div class="col-sm-6">
 						<label for="inputname">Registration No.</label>
-						<input type="text" class="form-control" name="reg_no" placeholder="Enter Registration No.">
+						<input type="text" class="form-control" name="reg_no" placeholder="Enter Registration No." required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputState">Course</label>
-						<select id="inputState" class="form-control" name="course">
+						<select id="inputState" class="form-control" name="course" required>
 							<option selected>Choose Course...</option>
 							<option>B.Tech</option>
 							<option>BCA</option>
@@ -78,9 +54,9 @@ Student: Add New
 							<option>B.A</option>
 						</select>
 					</div>
-					<div class="col-sm-6">
+					{% comment %} <div class="col-sm-6">
 						<label for="inputState">Course Duration (In Years)</label>
-						<select id="inputState" class="form-control" name="course_years">
+						<select id="inputState" class="form-control" name="course_years" required>
 							<option selected>Choose Duration...</option>
 							<option>1</option>
 							<option>2</option>
@@ -88,10 +64,10 @@ Student: Add New
 							<option>4</option>
 							<option>5</option>
 						</select>
-					</div>
+					</div> {% endcomment %}
 					<div class="col-sm-6">
 						<label for="inputState">School</label>
-						<select id="inputState" class="form-control" name="school">
+						<select id="inputState" class="form-control" name="school" required>
 							<option selected>Choose School...</option>
 							<option>SOET</option>
 							<option>SOPT</option>
@@ -102,7 +78,7 @@ Student: Add New
 					</div>
 					<div class="col-sm-6">
 						<label for="inputState">Department</label>
-						<select id="inputState" class="form-control" name="dept">
+						<select id="inputState" class="form-control" name="dept" required>
 							<option selected>Choose Department...</option>
 							<option>CSE</option>
 							<option>CE</option>
@@ -113,15 +89,15 @@ Student: Add New
 					</div>
 					<div class="col-sm-6">
 						<label for="inputname">Roll No.</label>
-						<input type="text" class="form-control" name="roll_no" placeholder="Enter Roll No.">
+						<input type="text" class="form-control" name="roll_no" placeholder="Enter Roll No." required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputname">University Mail ID</label>
-						<input type="text" class="form-control" name="university_mail" placeholder="Enter Mail ID">
+						<input type="text" class="form-control" name="university_mail" placeholder="Enter Mail ID" required>
 					</div>
 					<div class="col-sm-6">
 						<label for="inputState">Mentor's Name</label>
-						<select id="inputState" class="form-control" name="mentors_name">
+						<select id="inputState" class="form-control" name="mentors_name" required>
 							<option selected>Choose...</option>
 							<option>Prof. S. Biswas</option>
 							<option>Prof. R. Kumar</option>
@@ -130,17 +106,12 @@ Student: Add New
 							<option>Prof. D. Paul</option>
 						</select>
 					</div>
-					<div class="col-sm-6">
-						<label for="inputname">Date of Admission</label>
-						<input type="date" class="form-control" name="date_of_admission" placeholder="Auto Generated">
-					</div>
-
-
+					
 
 					<div class="col-sm-6 form-row field-photo">
 						<div>
 							<label for="id_photo">Photos (.jpg or .png format)</label>
-							<input type="file" name="photo" accept="image/*" id="id_photo">
+							<input type="file" name="photo" accept="image/*" id="id_photo" required>
 						</div>
 					</div>
 
@@ -195,10 +166,10 @@ Student: Add New
 									{% csrf_token %}
 									<input type="submit" class="btn btn-warning btn-sm" value="View">
 								</form>
-								<form action=" {% url 'delete_student' data.id %} " method="post" class="d-inline">
+								{% comment %} <form action=" {% url 'delete_student' data.id %} " method="post" class="d-inline">
 									{% csrf_token %}
 									<input type="submit" class="btn btn-danger btn-sm" value="Delete">
-								</form>
+								</form> {% endcomment %}
 							</td>
 						</tr>
 						{% endfor %}

@@ -146,8 +146,8 @@ Welcome: Face Recognition App
     <p class="sign" align="center">Welcome !</p>
     <form name="form1" class="form-group" method="post" action="/">
 	{% csrf_token %}
-      	<input class="un " type="username" align="center" name="username" placeholder="Enter your Username">
-     	<input class="pass" type="password" align="center" name="password" placeholder="Enter your Password">
+      	<input class="un " type="username" align="center" name="username" placeholder="Enter your Username" required>
+     	<input class="pass" type="password" align="center" name="password" placeholder="Enter your Password" required>
       <button class="submit" >Log in</button>
 	  <p class="signup" align="center"><a>Not Registered?</a> <a href='/signup/'><i>Sign up</i></a></p>
       <p class="forgot" align="center"><a href=" {% url 'password_reset' %} "><i>Forgot Password?</i></p>

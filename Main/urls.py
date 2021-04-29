@@ -47,6 +47,7 @@ urlpatterns = [
     path('',include('outside.urls')),
     path('outside/',include('outside.urls')),
     path('scan/outside/',include('outside.urls')),
+    path('outside/capture/', include('outside.urls')),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

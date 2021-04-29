@@ -21,10 +21,7 @@ View: Employee
 						<label for="inputname">Employee Name</label>
 						<input type="text" class="form-control" name="name" placeholder=" {{view_em.name}} " disabled="true">
 					</div>
-					<div class="col-sm-6">
-						<label for="inputname">Date of Birth</label>
-						<input  class="form-control" name="date_of_birth" placeholder="{{view_em.date_of_birth}}" disabled="true">
-					</div>
+					
 					<div class="col-sm-6">
 						<label for="inputname">Employee ID</label>
 						<input type="text" class="form-control" name="employee_id" placeholder=" {{view_em.employee_id}} " disabled="true">
@@ -34,27 +31,18 @@ View: Employee
 						<label for="inputname">Department</label>
 						<input type="text" class="form-control" name="employee_id" placeholder=" {{view_em.department}} " disabled="true">
 					</div>
-                    <div class="col-sm-6">
-						<label for="inputname">School</label>
-						<input type="text" class="form-control" name="employee_id" placeholder=" {{view_em.school}} " disabled="true">
-					</div>
+                    
 
                     <div class="col-sm-6">
 						<label for="inputname">University Mail ID</label>
 						<input type="text" class="form-control" name="employee_id" placeholder=" {{view_em.university_mail}} " disabled="true">
 					</div>
+
 					<div class="col-sm-6">
-						<label for="inputname">ID Proof</label>
-						<input type="text" class="form-control" name="id_proof_no" placeholder=" {{view_em.id_type}} " disabled="true">
+						<label for="inputname">Phone No.</label>
+						<input type="number" class="form-control" name="phone_no" placeholder="{{view_em.phone_no}}" disabled="true">
 					</div>
-					<div class="col-sm-6">
-						<label for="inputname">ID Proof No.</label>
-						<input type="text" class="form-control" name="id_proof_no" placeholder=" {{view_em.id_proof_no}} " disabled="true">
-					</div>
-                    <div class="col-sm-6">
-						<label for="inputname">Date of Joining</label>
-						<input type="text" class="form-control" name="employee_id" placeholder=" {{view_em.date_of_joining}} " disabled="true">
-					</div>
+				
 
                     <div class="col-md-12" style="text-align: center; margin-top: 20px">
                         <a href=" {% url 'employee' %} " class="btn btn-danger">←Back</a>
