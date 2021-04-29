@@ -131,6 +131,7 @@ Outside Person
                 <div id="camera_preview" name='photo'>
                     <h2>No image to preview</h2>
                 </div>
+                
            
         </div>
     </div>
@@ -153,7 +154,13 @@ Outside Person
             ' <img class="img" name="photo" src="'+photo+'"/> ';
         });
     }
+    Webcam.upload( base64image, 'outside_img/', function(code, text) {
+    console.log('Save successfully');
+  //console.log(text);
+ });
 </script>
+
+
 {% endblock body %}
 
 

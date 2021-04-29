@@ -74,6 +74,3 @@ def edit_outside(request, id):
 @login_required(login_url='/')
 def scan_outside(request):
     pass
-
-def outside_capture(request):
-    return render(request, 'outside_person/outside_personCapture')
