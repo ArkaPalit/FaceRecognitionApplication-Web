@@ -27,7 +27,7 @@ SECRET_KEY = 'as+s7n6ayci19@ojt!@3tqnpn(csgum*5%4^+_&&l!9u(=ju72'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', '127.0.0.1', 'face-recognition-arka.herokuapp.com']
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'fra-arka.herokuapp.com']
 
 
 # Application definition
